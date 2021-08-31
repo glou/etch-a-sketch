@@ -65,10 +65,15 @@
     display: grid;
     flex-wrap: wrap;
     margin: 0 auto;
+ /* IMPORTANT:
+    - the pad must always be a square for the script to work
+    - the unit must be 2 characters length
+*/
     width: 400px;
     height: 400px;
-    grid-template-rows: repeat(17, 1fr);
-    grid-template-columns: repeat(17, 1fr);
+    /* Default pad is 16x16 */
+    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(16, 1fr);
 }
 
 .cell {
