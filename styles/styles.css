@@ -61,3 +61,17 @@
 
 /* Begin of my code */
 
+.pad {
+    display: grid;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 400px;
+    height: 400px;
+    grid-template-rows: repeat(17, 1fr);
+    grid-template-columns: repeat(17, 1fr);
+}
+
+.cell {
+    border: 1px solid blue;
+    background-color: yellow;
+}
