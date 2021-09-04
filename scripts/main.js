@@ -92,9 +92,9 @@ function evalNewSide () {
     let side = prompt('Put a number from 1 to 64 to resize the pad \nThe pad\'s size will be a square of this size');
     if (side === null) {
         return;
-    } else if (isNaN(+side)) {
+    } else if (isNaN(+side) || side < 1 || side > 64) {
         alert('Please, insert only a number, from 1 to 64!');
-        evalNewSide();
+        evalNewSide();    
     }
     createGrid(side);
 }
