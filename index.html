@@ -4,25 +4,26 @@
         <meta charset="UTF-8">
         <title>Etch-a-sketech</title>
         <link href="styles/styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Sarpanch:wght@600&Numans&family=Rammetto+One" rel="stylesheet">
         <script src="scripts/main.js" defer></script>
     </head>
     <body>
-        <header>
-            <h1>Etch-a-sketech</h1>
-            <h3>Move over the frame to draw!</h3>
-        </header>
-        <div class="buttons">
-            <button>CLEAR</button>
-            <button>RANDOM COLORS</button>
-        </div>
-        <div class="container">
-            <div class="pad">           
-
+        <div class="main-container">
+            <div id="header">
+                <h1>Etch-a-sketch</h1>
+                <h3>Move over the frame to draw!</h3>
             </div>
-        </div>
-        <footer>
-            <p>Made by me</p>
-        </footer>
-
+            <div class="buttons-container">
+                <button id="newSize" class="buttons">CHANGE SIZE</button>
+                <button id="clear" class="buttons">CLEAR THE PAD</button>
+                <button id="r-colors" class="buttons">RANDOM COLORS</button>
+            </div>
+            <div class="pad-container">
+                <div class="pad"></div>                
+            </div>
+            <footer>
+                <p>Made by Gabriel, 2021 - "The Odin Project" curriculum</p>            
+            </footer>
+        </div> 
     </body>    
 </html>
