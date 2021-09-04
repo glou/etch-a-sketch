@@ -11,9 +11,9 @@
 const pad = document.querySelector('div.pad'); //Global reference for the drawing pad
 let newCells = []; //Array of the cells created inside the pad.
 
-const clearButton = document.getElementById('#clear');
-const newButton = document.getElementById('#newSize');
-const randomButton = document.getElementById('#r-colors');
+const clearButton = document.getElementById('clear');
+const newButton = document.getElementById('newSize');
+const randomButton = document.getElementById('r-colors');
 
 
 /* Retrives the pad-div side. Since it should always be a square, the function returns
@@ -80,11 +80,49 @@ function removeCells () {
 }
 
 function changeCell (e) {
+    e.target.style.opacity = '1';
     e.target.style.backgroundColor = 'white';
 }
 
+function clearPad () {
+    newCells.forEach( (cell) => cell.style.opacity = '0');
+}
+
+function evalNewSide () {
+    let side = prompt('Put a number from 1 to 64 to resize the pad \nThe pad\'s size will be a square of this size');
+    if (side === null) {
+        return;
+    } else if (isNaN(+side)) {
+        alert('Please, insert only a number, from 1 to 64!');
+        evalNewSide();
+    }
+    createGrid(side);
+}
+
+function rngColors () {
+    clearPad();
+    let randomColor = function (e) {
+        let color = `rgb(${String(Math.floor(Math.random() * 256))},
+                         ${String(Math.floor(Math.random() * 256))},
+                         ${String(Math.floor(Math.random() * 256))})`;
+        e.target.style.opacity = '1';
+        e.target.style.backgroundColor = color;
+    }
+    randomButton.classList.toggle('rng-colors');
+    console.log(this);
+    if (randomButton.textContent === 'RANDOM COLORS'){
+        pad.removeEventListener('mouseover', changeCell);
+        pad.addEventListener('mouseover', randomColor);        
+        randomButton.textContent = 'WHITE DOTS';
+    } else {
+        pad.removeEventListener('mouseover', randomColor);
+        pad.addEventListener('mouseover', changeCell);
+        randomButton.textContent = 'RANDOM COLORS';
+    }
+}
+
 window.addEventListener('load', createGrid(16));
-pad.addEventListener('mousemove', changeCell);
-clearButton.addEventListener('click', removeCells());
-newButton.addEventListener('click', evalNewSide());
-randomButton.addEventListener('click', rngColors());
+pad.addEventListener('mouseover', changeCell);
+clearButton.addEventListener('click', clearPad);
+newButton.addEventListener('click', evalNewSide);
+randomButton.addEventListener('click', rngColors);

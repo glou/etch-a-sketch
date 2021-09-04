@@ -119,10 +119,18 @@ p {
     font-family: Sarpanch, Arial, sans-serif;
     font-size: 0.9rem;
     letter-spacing: 0.1rem;
+    cursor: pointer;
+    width: 120px;
 }
 
 .buttons:active {
     background-color: #fff;
+    border-color: rgb(60, 170, 220);
+    color: rgb(60, 170, 220);
+}
+
+.rng-colors {
+    background-color: rgb(255, 255, 255);
     border-color: rgb(60, 170, 220);
     color: rgb(60, 170, 220);
 }
@@ -146,7 +154,8 @@ p {
     /* Default pad is 16x16 */
     grid-template-rows: repeat(16, 1fr);
     grid-template-columns: repeat(16, 1fr);
-    background-color: transparent;    
+    background-color: transparent;
+    box-shadow: 5px 5px 5px 5px rgba(19, 108, 150, 0.521);    
 }
 
 .cell {
