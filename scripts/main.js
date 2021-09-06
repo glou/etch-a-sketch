@@ -53,22 +53,9 @@ function createCells (size) {
         newCells.push(document.createElement("div"));
     }
     newCells.forEach(function (cell) {
-        cell.classList.add('cell');
-        resizeCell(size);
+        cell.classList.add('cell');        
         pad.appendChild(cell);      
     })    
-}
-
-/* Resizes each cell according to pad size
-   Takes one parameter, which indicates the new side of the square */
-
-function resizeCell (size) {
-    let cellSize = getPadSide() / size;
-    cellSize = String(cellSize) + 'px'; //One must set CSS properties with strings
-    newCells.forEach(function (cell) {
-        cell.style.width = cellSize;        
-        cell.style.height = cellSize;
-    })
 }
 
 //Remove inner divs from the pad
@@ -79,14 +66,21 @@ function removeCells () {
     }
 }
 
+//Paints the cell which the user has the mouse over
+
 function changeCell (e) {
     e.target.style.opacity = '1';
     e.target.style.backgroundColor = 'white';
 }
 
+
+//"CLEAR" button
+
 function clearPad () {
     newCells.forEach( (cell) => cell.style.opacity = '0');
 }
+
+//"CHANGE SIZE" button
 
 function evalNewSide () {
     let side = prompt('Put a number from 1 to 64 to resize the pad \nThe pad\'s size will be a square of this size');
@@ -99,6 +93,9 @@ function evalNewSide () {
     createGrid(side);
 }
 
+//"RANDOM COLORS" button
+// Generates a random color for each cell the user has the mouse over
+
 function rngColors () {
     clearPad();
     let randomColor = function (e) {
@@ -108,8 +105,7 @@ function rngColors () {
         e.target.style.opacity = '1';
         e.target.style.backgroundColor = color;
     }
-    randomButton.classList.toggle('rng-colors');
-    console.log(this);
+    randomButton.classList.toggle('rng-colors');    
     if (randomButton.textContent === 'RANDOM COLORS'){
         pad.removeEventListener('mouseover', changeCell);
         pad.addEventListener('mouseover', randomColor);        
@@ -120,6 +116,10 @@ function rngColors () {
         randomButton.textContent = 'RANDOM COLORS';
     }
 }
+
+
+//The handlers needed for the user interaction
+//Creates a default grid of 16x16 on page load
 
 window.addEventListener('load', createGrid(16));
 pad.addEventListener('mouseover', changeCell);
