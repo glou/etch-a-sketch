@@ -13,5 +13,6 @@ hard to implement, but it was just hard :)
 - I had to search often both about JS and CSS functions, properties, methods etc.
 
 In every project so far, people at TOP's discord server were very helpful and thoughtful.
+
 I thank particuarly "Rip Asstley" for helping me to figure out what was the performance issue
-I had to recreate the pad from the user's imput.
+I had to recreate the pad from the user's input.
